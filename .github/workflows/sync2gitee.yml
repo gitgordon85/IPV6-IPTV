@@ -15,6 +15,6 @@ jobs:
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: "IPV6-IPTV"
-          account_type: "org"  # 根据账号类型选择 org/user
+          account_type: "user"  # 根据账号类型选择 org/user
           force_update: true
           debug: true
