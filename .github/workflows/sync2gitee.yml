@@ -1,11 +1,21 @@
-name: Mirror the Github organization repos to Gitee.
+name: Sync Org Repos
+on:
+  workflow_dispatch:  # 允许手动触发
+  schedule:
+    - cron: '0 3 * * *'  # 每天 UTC 时间 3 点自动同步
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror to Gitee
         uses: Yikun/hub-mirror-action@master
         with:
-          src: 'github/IPV6-IPTV'    			
-          dst: 'gitee/IPV6-IPTV'   
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  
-          dst_token:  ${{ secrets.GITEE_TOKEN }}  
-          force_update: true
+          src: "github/IPV6-IPTV"
+          dst: "gitee/IPV6-IPTV"
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: "IPV6-IPTV"
-          account_type: user   		
+          account_type: "org"  # 根据账号类型选择 org/user
+          force_update: true
           debug: true
