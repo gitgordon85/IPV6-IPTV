@@ -1,25 +1,11 @@
-name: Sync IPV6-IPTV to Gitee
-on:
-  push:
-    branches: [ "main", "master" ]  # 触发同步的分支
-  schedule:
-    - cron: '0 3 * * *'  # 每天 UTC 3 点定时同步（东八区 11 点）
-
-jobs:
-  mirror:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Mirror to Gitee
+ - name: Mirror the Github organization repos to Gitee.
         uses: Yikun/hub-mirror-action@master
         with:
-          # 源端配置（GitHub）
-          src: github/gordon85@126.com
-          # 目的端配置（Gitee）
-          dst: gitee/gordon85@126.com
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token: ${{ secrets.GITEE_TOKEN }}
-          # 同步策略
-          static_list: "IPV6-IPTV"  # 仅同步此仓库[3,5](@ref)
-          force_update: true        # 强制覆盖 Gitee 仓库历史[3](@ref)
-          debug: true               # 输出详细日志[3](@ref)
-          clone_style: "ssh"        # 使用 SSH 协议加速同步[3](@ref)
+          src: 'github/IPV6-IPTV'    			
+          dst: 'gitee/IPV6-IPTV'   
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}  
+          dst_token:  ${{ secrets.GITEE_TOKEN }}  
+          force_update: true
+          static_list: "IPV6-IPTV"
+          account_type: user   		
+          debug: true
