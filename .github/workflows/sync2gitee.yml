@@ -2,7 +2,6 @@ name: Sync Org Repos
 on:
   workflow_dispatch:  # 允许手动触发
 
-
 jobs:
   mirror:
     runs-on: ubuntu-latest
@@ -10,8 +9,8 @@ jobs:
       - name: Mirror to Gitee
         uses: Yikun/hub-mirror-action@master
         with:
-          src: "github/IPV6-IPTV"
-          dst: "gitee/IPV6-IPTV"
+          src: "github/gitgordon85"
+          dst: "gitee/陈乐"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
           static_list: "IPV6-IPTV"
